@@ -1,0 +1,12 @@
+<h1>Librarian</h1>
+
+<div id="librarians">
+    <% @librarians.each do |librarians| %>
+        <%= render librarians%>
+        <p>
+            <%= link_to "Info Librarian", librarians%>
+        </p>
+    <% end %>
+</div>
+
+<%= link_to "New librarian", new_librarian_path%>
