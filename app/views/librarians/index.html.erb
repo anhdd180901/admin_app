@@ -1,12 +1,22 @@
 <h1>Librarian</h1>
-
-<div id="librarians">
-    <% @librarians.each do |librarians| %>
-        <%= render librarians%>
-        <p>
-            <%= link_to "Info Librarian", librarians%>
-        </p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Author</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <% @librarians.each do |librarian| %>
+        <tr>
+        <td><%= librarian.name %></td>
+        <td><%= librarian.age %></td>
+        <td><%= link_to "Show librarian", librarian %></td>
+        </tr>
     <% end %>
-</div>
-
+    </tr>
+  </tbody>
+</table>
 <%= link_to "New librarian", new_librarian_path%>
