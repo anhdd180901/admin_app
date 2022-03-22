@@ -1,5 +1,6 @@
 class LibrariansController < ApplicationController
     before_action :set_librarian, only: %i[show edit update destroy]
+    before_action :authenticate_user!, except: %i[show index]
     def index
         @librarians = Librarian.all
     end
@@ -11,13 +12,13 @@ class LibrariansController < ApplicationController
     end
 
     def new 
-    @librarians = Librarian.new
+        @librarian = Librarian.new
     end
     
     def create
-        @librarians = Librarian.new(librarian_params)
-        if @librarians.save
-            redirect_to @librarians, notice: "New librarians was successfully"
+        @librarian = Librarian.new(librarian_params)
+        if @librarian.save
+            redirect_to @librarian, notice: "New librarian was successfully"
         else
             render "new"
         end
@@ -33,7 +34,7 @@ class LibrariansController < ApplicationController
 
     def destroy
         @librarian.destroy
-        redirect_to @librarian, notice: "Destroy librarians was successfully"
+        redirect_to @librarian, notice: "Destroy librarian was successfully"
     end
     
     private
